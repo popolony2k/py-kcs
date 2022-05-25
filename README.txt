@@ -6,16 +6,6 @@ Copyright (C) 2010
 This is free software. You are free to use it however you wish, but if you
 decide to include it in some other package, please give me some credit.
 
-This is a fork of original project found at https://www.dabeaz.com/py-kcs/ and
-after contacting the original author, David Beazley I got permission to fork his
-project here on my Github repository and credits about original author will be
-kept forever :)
-
-Now I'll be adding some new features to Dave's excellent project.
-
-Maintainer: PopolonY2k (http://www.popolony2k.com.br)
-CopyLeft (C) since 2022. RobotMessenger.org
-
 Overview
 --------
 This package provides a pair of scripts, kcs_encode.py and kcs_decode.py
@@ -41,7 +31,7 @@ this:
     % python3 kcs_decode.py input.wav
 
 Decoded text contained in the WAV file will be printed to standard
-output.  This decoding process will strip NULL bytes and convert
+output.  This decoding process will strip NULL bytes and convert 
 line endings to the native line endings for your platform.
 
 If you want to decode raw binary data, type this:
@@ -70,3 +60,7 @@ Feedback
 This is just a fun personal project for me. If you use these scripts
 for a vintage computing project, send me email (dave@dabeaz.com) and
 let me know about it.  --Dave
+
+
+
+
