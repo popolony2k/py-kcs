@@ -36,7 +36,7 @@ def generate_wav_sign_change_bits(wavefile):
             previous = signbit
 
 # Base frequency (representing a 1)
-BASE_MUL  = 192
+BASE_MUL  = 1
 BASE_FREQ = 2400 * BASE_MUL
 
 # Generate a sequence of data bytes by sampling the stream of sign change bits
@@ -47,7 +47,7 @@ def generate_bytes(bitstream,framerate):
     frames_per_bit = int(round(float(framerate)*8/BASE_FREQ))
 
     # Queue of sampled sign bits
-    sample = deque(maxlen=frames_per_bit)     
+    sample = deque(maxlen=frames_per_bit)
 
     # Fill the sample buffer with an initial set of data
     sample.extend(islice(bitstream,frames_per_bit-1))
@@ -68,7 +68,7 @@ def generate_bytes(bitstream,framerate):
                 if sum(islice(bitstream,frames_per_bit)) >= 12:
                     byteval |= mask
             yield byteval
-            # Skip the final two stop bits and refill the sample buffer 
+            # Skip the final two stop bits and refill the sample buffer
             sample.extend(islice(bitstream,2*frames_per_bit,3*frames_per_bit-1))
             sign_changes = sum(sample)
 

@@ -17,7 +17,7 @@ import wave
 
 # A few global parameters related to the encoding
 
-BASE_MUL  = 192
+BASE_MUL  = 1
 
 FRAMERATE = 9600 * BASE_MUL  # Hz
 ONES_FREQ = 2400 * BASE_MUL  # Hz (per KCS)
@@ -25,7 +25,7 @@ ZERO_FREQ = 1200 * BASE_MUL  # Hz (per KCS)
 AMPLITUDE = 128              # Amplitude of generated square waves
 CENTER    = 128              # Center point of generated waves
 
-# Create a single square wave cycle of a given frequency 
+# Create a single square wave cycle of a given frequency
 def make_square_wave(freq,framerate):
     n = int(framerate/freq/2)
     return bytearray([CENTER-AMPLITUDE//2])*n + \
@@ -69,7 +69,7 @@ def kcs_write_wav(filename,data,leader,trailer):
         #if byteval == 0x0d:
         #    # If CR, emit a short pause (10 NULL bytes)
         #    w.writeframes(null_pulse)
-    
+
     # Write the trailer
     w.writeframes(one_pulse*(int(FRAMERATE/len(one_pulse))*trailer))
     w.close()
@@ -86,7 +86,3 @@ if __name__ == '__main__':
     #data = data.replace('\n','\r\n')         # Fix line endings
     #rawdata = bytearray(data.encode('latin-1'))
     kcs_write_wav(out_filename,data,5,5)
-
-    
-
-    
